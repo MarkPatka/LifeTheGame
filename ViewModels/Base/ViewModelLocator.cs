@@ -6,4 +6,8 @@ internal class ViewModelLocator
 {
     public MainWindowViewModel MainWindowModel => 
         App.Services.GetRequiredService<MainWindowViewModel>();
+
+    public GameFieldViewModel GameFieldModel => 
+        App.Services.GetRequiredService<GameFieldViewModel>();
+
 }

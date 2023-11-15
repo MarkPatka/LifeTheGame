@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-
 namespace Life_The_Game.ViewModels.Base;
 
 internal abstract class ViewModel : INotifyPropertyChanged
