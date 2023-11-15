@@ -7,8 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" 
              d:DesignWidth="500"
+             DataContext="{Binding GameFieldModel, Source={StaticResource Locator}}"
              >
     <Border Background="black">
-            
+        <TextBlock Text="{Binding Title}" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="SemiBold" 
+                   Foreground="#FF68EEC9"/>
     </Border>
 </UserControl>

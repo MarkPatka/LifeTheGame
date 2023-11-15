@@ -2,9 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
         xmlns:local="clr-namespace:Life_The_Game"
         xmlns:MD="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:controls="clr-namespace:Life_The_Game.Views.Controls" 
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         AllowsTransparency="True"
         WindowStyle="None"
@@ -97,34 +98,30 @@
                     Background="#FF7C55C1"
                     CornerRadius="0 0 0 30">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
-                    <!-- ItemsSource="{Binding ShortStringList}" -->
                     <ComboBox MD:HintAssist.Hint="RESOLUTION"
-                          IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
-                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                          Margin="10"
-                          FontSize="14"
-                          FontWeight="SemiBold">
-                        <ComboBoxItem Content="Apple"/>
-                        <ComboBoxItem Content="Banana" />
-                        <ComboBoxItem Content="Pear" />
-                        <ComboBoxItem Content="Orange" />
+                              IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                              ItemsSource="{Binding Resolution}"
+                              SelectedItem="{Binding SelectedResolution, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Margin="10"
+                              FontSize="14"
+                              FontWeight="SemiBold">
                     </ComboBox>
                     <ComboBox MD:HintAssist.Hint="DENSITY"
-                          IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
-                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                          Margin="10"
-                          FontSize="14"
-                          FontWeight="SemiBold">
-                        <ComboBoxItem Content="Apple"/>
-                        <ComboBoxItem Content="Banana" />
-                        <ComboBoxItem Content="Pear" />
-                        <ComboBoxItem Content="Orange" />
+                              IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                              ItemsSource="{Binding Density}"
+                              SelectedItem="{Binding SelectedDensity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Margin="10"
+                              FontSize="14"
+                              FontWeight="SemiBold">
                     </ComboBox>
 
                     <Button x:Name="Start"
                             Content="START"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Command="{Binding StartGenerationCommand}"
                             Margin="10" 
                             Background="#FF81D4FA"
                             VerticalAlignment="Bottom"
@@ -144,7 +141,7 @@
                     Grid.Row="1"
                     CornerRadius="0 0 30 0"
                     Background="#fafafa">
-                <ContentControl x:Name="ActiveItem"/>
+                <controls:GameField x:Name="ActiveItem"/>
             </Border>
         </Grid>
 
